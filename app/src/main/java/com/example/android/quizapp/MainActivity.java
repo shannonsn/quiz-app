@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -23,8 +24,8 @@ public class MainActivity extends AppCompatActivity {
     int Score = 0;
     RadioGroup radioGroup;
     RadioButton radioButton;
-    String rose = "Rose";
-    String jack = "Jack";
+    String rose ="Rose";
+    String jack ="Jack";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,15 +34,27 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public String orderSummary(String hasName, String hasNameJack , String hasNameRose){
-        String displayMessage = "Hi and welcome " + hasName + " name of male actor " + hasNameJack + " name of female actor "+hasNameRose;
-
+    public String orderSummary(String hasName, String hasNameJack , String hasNameRose, Boolean hasFavouriteActorJack , Boolean hasFavouriteActorRose){
+        String displayMessage = "Hi and welcome " + hasName + "\nName of male actor is " + hasNameJack + "\nName of female actor is "+hasNameRose;
+               displayMessage += "\nIs you Favourite male " + hasFavouriteActorJack;
+               displayMessage += "\nIs your Favour Actor Female " +hasFavouriteActorRose;
+               displayMessage += "\nTherefore your score is " + Score;
 //        displayMessage = displayMessage + "\nWe are happy to announce another " + "female "+" just joined on our revolution lets see how smart you really are"+"\nBesides joining our revolution you already made one correct choice";
         return displayMessage;
     }
 
-
+//public int totalScore(View view){
+//        return Score;
+//}
     public void submit(View view){
+
+        CheckBox actorJack = (CheckBox) findViewById(R.id.jack);
+        boolean hasFavouriteActorJack = actorJack.isChecked();
+
+        CheckBox actorRose = (CheckBox) findViewById(R.id.rose);
+        Boolean hasFavouriteActorRose = actorRose.isChecked();
+
+
         // this finds the name of the person taking the quizz
         EditText getName = (EditText) findViewById(R.id.name);
         final String hasName = getName.getText().toString();
@@ -54,81 +67,109 @@ public class MainActivity extends AppCompatActivity {
 
         //gets name of female actor Ross
         EditText femaleActorName = (EditText) findViewById(R.id.female);
-        String  hasNameRose = femaleActorName.getText().toString();
+        String hasNameRose = femaleActorName.getText().toString();
 
-        if(hasNameRose != rose){
-            Toast.makeText(this, "Did you know that the female character was named" + rose,
+        if(hasNameRose.equals(rose)){
+            Score = Score +1;
+            Log.i("MainActivity.java", hasNameRose);
+            Toast.makeText(this, "That is correct her name is " + rose,
                     Toast.LENGTH_LONG).show();
-        }else if (hasNameRose == rose){
-            Toast.makeText(this, "Thats Correct her name is Rose",
-                    Toast.LENGTH_LONG).show();
-            Score = + 1;
-        }else if(hasNameRose == null){
-            Toast.makeText(this, "please enter a name",
+        }else if (!hasNameRose.equals(rose)){
+            Toast.makeText(this, "Did you know her name is " + rose,
                     Toast.LENGTH_LONG).show();
         }
+
+
 
         //gets the name of the male actor Jack
         EditText maleActorName = (EditText) findViewById(R.id.male);
         String hasNameJack = maleActorName.getText().toString();
 
-        if (hasNameJack != jack){
-            Log.i("MainActivity.java", hasNameRose);
-            Toast.makeText(this, "that is incorrect his name is Jack",
-                    Toast.LENGTH_LONG).show();
-        }else{
+        if (hasNameJack.equals(jack)){
+            Score = Score +1;
             Log.i("MainActivity.java", hasNameJack);
-            Toast.makeText(this, "that is correct his name is Jack",
+            Toast.makeText(this, " That is correct his name is Jack",
+                    Toast.LENGTH_LONG).show();
+        }else if(!hasNameJack.equals(jack)){
+            Log.i("MainActivity.java", hasNameJack);
+            Toast.makeText(this, " That is incorrect his name is Jack",
                     Toast.LENGTH_LONG).show();
         }
 
 
+displayTotalScored(Score);
 
-        final String dispayResults = orderSummary(hasName ,hasNameJack , hasNameRose);
+        final String displayResults = orderSummary(hasName ,hasNameJack , hasNameRose , hasFavouriteActorJack, hasFavouriteActorRose);
+
         //this checks the radio button that has been checked inside the groupView of gender
-        radioGroup = findViewById(R.id.radioGroupSex);
+
+
         Button submit = findViewById(R.id.submit);
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                radioGroup = findViewById(R.id.radioGroupSex);
                 int radioId = radioGroup.getCheckedRadioButtonId();
                 radioButton = findViewById(radioId);
                 String yourChoice = "your choice";
-                dispayResult(dispayResults + yourChoice +": " +radioButton.getText());
-            }
-        });
-//
-        radioGroup = findViewById(R.id.titanic_sank);
-        submit.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                int radioId = radioGroup.getCheckedRadioButtonId();
-                radioButton = findViewById(radioId);
-                String yearSelected = "year Selected";
-                dispayResult(yearSelected + radioButton.getText());
-            }
-        });
-        radioGroup = findViewById(R.id.tatanic_made);
-        submit.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                int radioId = radioGroup.getCheckedRadioButtonId();
-                radioButton = findViewById(radioId);
-                String yearSelected = "year Selected";
-                dispayResult(yearSelected + radioButton.getText());
+                genderRadioDisplay(yourChoice +": " +radioButton.getText());
             }
         });
 
-//        Intent intent = new Intent(Intent.ACTION_SENDTO);
-//        intent.setData(Uri.parse("mailto:")); // only email apps should handle this
-//        intent.putExtra(Intent.EXTRA_SUBJECT, "Quiz App Results ");
-//        intent.putExtra(intent.EXTRA_TEXT, dispayResults);
-//        if (intent.resolveActivity(getPackageManager()) != null) {
-//            startActivity(intent);
-//        }
+
+            Button sank = findViewById(R.id.submit);
+        sank.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                radioGroup = findViewById(R.id.titanic_sank);
+                int radioId = radioGroup.getCheckedRadioButtonId();
+                radioButton = findViewById(radioId);
+                String yearSelected = "year selected for Titanic Sank";
+                displayTitanicSank(yearSelected + radioButton.getText());
+            }
+        });
+
+
+
+
+        submit.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                radioGroup = findViewById(R.id.titanic_made);
+                int radioId = radioGroup.getCheckedRadioButtonId();
+                radioButton = findViewById(radioId);
+                displayResult("Selected " + radioButton.getText());
+            }
+        });
+
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setData(Uri.parse("mailto:")); // only email apps should handle this
+        intent.putExtra(Intent.EXTRA_SUBJECT, "Quiz App Results ");
+        intent.putExtra(intent.EXTRA_TEXT, displayResults);
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
     }
-    public void dispayResult(String view){
+
+
+
+    public void displayTotalScored(int score){
+        TextView scoreResults = (TextView) findViewById(R.id.scores);
+        scoreResults.setText(String.valueOf(score));
+    }
+
+    public void displayResult(String view){
         TextView resultsScore = (TextView) findViewById(R.id.results);
         resultsScore.setText(String.valueOf(view));
     }
-}
+
+    public void displayTitanicSank(String view){
+        TextView YearSank = (TextView) findViewById(R.id.yearSank);
+        YearSank.setText(String.valueOf(view));
+    }
+    public void genderRadioDisplay(String view){
+        TextView displayRadioGender = (TextView) findViewById(R.id.genderDisplay);
+        displayRadioGender.setText(String.valueOf(view));
+    }
+
+    }
