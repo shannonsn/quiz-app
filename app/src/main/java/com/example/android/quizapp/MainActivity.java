@@ -24,28 +24,30 @@ public class MainActivity extends AppCompatActivity {
     int Score = 0;
     RadioGroup radioGroup;
     RadioButton radioButton;
+    RadioGroup radioGroupGender;
+    RadioButton radioButtonGender;
     String rose ="Rose";
     String jack ="Jack";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
     }
 
     public String orderSummary(String hasName, String hasNameJack , String hasNameRose, Boolean hasFavouriteActorJack , Boolean hasFavouriteActorRose){
-        String displayMessage = "Hi and welcome " + hasName + "\nName of male actor is " + hasNameJack + "\nName of female actor is "+hasNameRose;
-               displayMessage += "\nIs you Favourite male " + hasFavouriteActorJack;
-               displayMessage += "\nIs your Favour Actor Female " +hasFavouriteActorRose;
+        String displayMessage = "Hi and welcome " + hasName + "\nName of male actor is " + hasNameJack;
+               displayMessage += "\nName of female actor is "+hasNameRose;
+               displayMessage += "\nIs your Favourite Male : " + hasFavouriteActorJack;
+               displayMessage += "\nIs your Favour Actor Female : " +hasFavouriteActorRose;
                displayMessage += "\nTherefore your score is " + Score;
+               displayMessage += "\nyour sex";
 //        displayMessage = displayMessage + "\nWe are happy to announce another " + "female "+" just joined on our revolution lets see how smart you really are"+"\nBesides joining our revolution you already made one correct choice";
         return displayMessage;
     }
 
-//public int totalScore(View view){
-//        return Score;
-//}
+
     public void submit(View view){
 
         CheckBox actorJack = (CheckBox) findViewById(R.id.jack);
@@ -108,23 +110,24 @@ displayTotalScored(Score);
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                radioGroup = findViewById(R.id.radioGroupSex);
-                int radioId = radioGroup.getCheckedRadioButtonId();
-                radioButton = findViewById(radioId);
+                radioGroupGender = findViewById(R.id.radioGroupSex);
+                int radioIdForSex = radioGroupGender.getCheckedRadioButtonId();
+                radioButtonGender = findViewById(radioIdForSex);
+                String gender = radioButtonGender.getText().toString();
                 String yourChoice = "your choice";
-                genderRadioDisplay(yourChoice +": " +radioButton.getText());
+                genderRadioDisplay(yourChoice +": " + gender);
             }
         });
 
 
-            Button sank = findViewById(R.id.submit);
-        sank.setOnClickListener(new View.OnClickListener(){
+
+        submit.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
                 radioGroup = findViewById(R.id.titanic_sank);
                 int radioId = radioGroup.getCheckedRadioButtonId();
                 radioButton = findViewById(radioId);
-                String yearSelected = "year selected for Titanic Sank";
+                String yearSelected = "Titanic Sank ";
                 displayTitanicSank(yearSelected + radioButton.getText());
             }
         });
