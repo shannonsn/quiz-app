@@ -18,7 +18,7 @@
 ### The app uses flash messages to alert you wherether your answer is correct or not and also an email intent that records your response back to you with your end Result as a Score
 
 ### This is the landing page
-<img src="/landing.jpeg" height="300px" width="250px">
+<img src="/landing.jpeg" height="400px" width="250px">
 
 ### This is the questions page
 <img src="/question.jpeg" height="500px" width="250px">
