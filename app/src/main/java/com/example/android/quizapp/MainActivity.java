@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-        //gets name of female actor Ross
+        //gets name of of the folder where Images are stored
         EditText folderImagesStored = (EditText) findViewById(R.id.folderImagesAreStored);
         String hasNameOfFolderImagesStored = folderImagesStored.getText().toString();
 
@@ -94,8 +94,8 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-        //gets the name of the male actor Jack
-        EditText fileExtentionName = (EditText) findViewById(R.id.extentionName);
+        //gets the name of the file extention that displays infomation to the screen
+         EditText fileExtentionName = (EditText) findViewById(R.id.extentionName);
         String hasExtentionName = fileExtentionName.getText().toString();
 
         if (hasExtentionName.equals(extentionName)) {
@@ -115,8 +115,6 @@ public class MainActivity extends AppCompatActivity {
         final String displayResults = orderSummary(hasName, hasExtentionName, hasGroupLayoutOptionTextView, hasNameOfFolderImagesStored, hasGroupLayoutOptionEditView, hasGroupLayoutOptionLinearLayoutView, hasGroupLayoutOptionRelativeView);
 
         //this checks the radio button that has been checked inside the groupView of gender
-
-
         Button submit = findViewById(R.id.submit);
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -130,17 +128,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
+//      this gets the radio bution checked for adjusting the font size
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                radioGroup = findViewById(R.id.titanic_made);
+                radioGroup = findViewById(R.id.adjust_text);
                 int radioId = radioGroup.getCheckedRadioButtonId();
                 radioButton = findViewById(radioId);
                 displayResult("Selected " + radioButton.getText());
             }
         });
-
+//      email entent that record information and sends it to the user
         Intent intent = new Intent(Intent.ACTION_SENDTO);
         intent.setData(Uri.parse("mailto:")); // only email apps should handle this
         intent.putExtra(Intent.EXTRA_SUBJECT, "Quiz App Results ");

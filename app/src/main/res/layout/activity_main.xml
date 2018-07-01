@@ -97,19 +97,19 @@
                             android:text="What attribute is used to adjust text size" />
 
                         <RadioGroup
-                            android:id="@+id/titanic_sank"
+                            android:id="@+id/adjust_text"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content">
 
                             <RadioButton
-                                android:id="@+id/year_titanic_sunk1"
+                                android:id="@+id/layout_width"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:checked="true"
                                 android:text="layout_width" />
 
                             <RadioButton
-                                android:id="@+id/year_titanic_sunk2"
+                                android:id="@+id/textSize"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="textSize" />
@@ -126,22 +126,22 @@
                                 android:text="aligning text Right of its parent would use what layout group" />
 
                             <RadioGroup
-                                android:id="@+id/titanic_made"
+                                android:id="@+id/viewOptionForAligningChildrenParents"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content">
 
                                 <RadioButton
-                                    android:id="@+id/movieMade1"
+                                    android:id="@+id/linearLayout"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:checked="true"
-                                    android:text="LinearLayout" />
+                                    android:text="Linear Layout" />
 
                                 <RadioButton
-                                    android:id="@+id/movieMade2"
+                                    android:id="@+id/RalativeLayout"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="RalativeLayout" />
+                                    android:text="Ralative Layout" />
                             </RadioGroup>
 
                             <LinearLayout
