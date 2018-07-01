@@ -9,9 +9,9 @@
 ## Layout Group Views included
 #### RalativeLayout view and LinearLayout Views
 ## Other views include 
-##### Edit View 
-##### RadioButton
-##### CheckBox 
-##### ImageView
+ * Edit View 
+ * RadioButton
+ * CheckBox 
+ * ImageView
 
 ### The app uses flash messages to alert you wherether your answer is correct or not and also an email intent that records your response back to you with your end Result as a Score
