@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -16,7 +18,25 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/wigglytext"
+                    android:scaleType="center"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerInParent="true"
+                    android:textColor="#004d40"
+                    android:text="Scroll down"
+                    android:textSize="40sp"
+                    />
+            </RelativeLayout>
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -25,19 +45,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
-
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="Welcome to Titanic"
+                        android:text="Welcome to the Quiz"
                         android:textSize="24sp" />
 
                     <EditText
                         android:id="@+id/name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Name" />
+                        android:hint="Please enter your name here" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -74,7 +93,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="What year did titanic sink?" />
+                            android:text="What attribute is used to adjust text size" />
 
                         <RadioGroup
                             android:id="@+id/titanic_sank"
@@ -86,13 +105,13 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:checked="true"
-                                android:text="year 1912" />
+                                android:text="layout_width" />
 
                             <RadioButton
                                 android:id="@+id/year_titanic_sunk2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="year 1997" />
+                                android:text="textSize" />
                         </RadioGroup>
 
                         <LinearLayout
@@ -103,7 +122,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="What years was the movie titanic made?" />
+                                android:text="aligning text Right of its parent would use what layout group" />
 
                             <RadioGroup
                                 android:id="@+id/titanic_made"
@@ -115,13 +134,13 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:checked="true"
-                                    android:text="year 1912" />
+                                    android:text="LinearLayout" />
 
                                 <RadioButton
                                     android:id="@+id/movieMade2"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="year 1997" />
+                                    android:text="RalativeLayout" />
                             </RadioGroup>
 
                             <LinearLayout
@@ -132,46 +151,58 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="What is the name of the main female character?" />
+                                    android:text="What is the name of the folder where images are stored?" />
 
                                 <EditText
-                                    android:id="@+id/female"
+                                    android:id="@+id/folderImagesAreStored"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:hint="name"
-                                    android:text="Rose" />
+                                    android:hint="name of the folder" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="What is the name of the main male actor?" />
+                                    android:text="what is the extention of the file that displays content on the screen" />
 
                                 <EditText
-                                    android:id="@+id/male"
+                                    android:id="@+id/extentionName"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:hint="name"
-                                    android:text="Jack" />
+                                    android:hint="enter file extention Name" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="favourite actor" />
+                                    android:text="select all the layouts that form part of Group Views" />
 
                                 <CheckBox
-                                    android:id="@+id/jack"
+                                    android:id="@+id/editViewOption"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="EditView"
+                                    android:textSize="16sp"
+                                    android:paddingLeft="24dp"/>
+                                <CheckBox
+                                    android:id="@+id/relativeViewOption"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:paddingLeft="24dp"
-                                    android:text="jack"
+                                    android:text="RalativeLayout"
                                     android:textSize="16sp" />
-
                                 <CheckBox
-                                    android:id="@+id/rose"
+                                    android:id="@+id/textViewOption"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:paddingLeft="24dp"
-                                    android:text="rose"
+                                    android:text="TextView"
+                                    android:textSize="16sp"/>
+
+                                <CheckBox
+                                    android:id="@+id/linearLayoutOption"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:paddingLeft="24dp"
+                                    android:text="LinearLayout"
                                     android:textSize="16sp" />
                             </LinearLayout>
                         </LinearLayout>

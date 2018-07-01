@@ -26,8 +26,8 @@ public class MainActivity extends AppCompatActivity {
     RadioButton radioButton;
     RadioGroup radioGroupGender;
     RadioButton radioButtonGender;
-    String rose ="Rose";
-    String jack ="Jack";
+    String imageStored ="Drawable";
+    String extentionName ="xml";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,13 +36,16 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public String orderSummary(String hasName, String hasNameJack , String hasNameRose, Boolean hasFavouriteActorJack , Boolean hasFavouriteActorRose){
-        String displayMessage = "Hi and welcome " + hasName + "\nName of male actor is " + hasNameJack;
-               displayMessage += "\nName of female actor is "+hasNameRose;
-               displayMessage += "\nIs your Favourite Male : " + hasFavouriteActorJack;
-               displayMessage += "\nIs your Favour Actor Female : " +hasFavouriteActorRose;
+    public String orderSummary(String hasName, String hasGroupLayoutOptionEditView ,Boolean hasGroupLayoutOptionTextView, String hasNameOfFolderImagesStored, Boolean hasGroupLayoutOptionLinearLayoutView, Boolean hasGroupLayoutOptionRelativeView){
+        String displayMessage = "Hi and welcome " + hasName;
+               displayMessage += "\nFor Every question Answered correctly you score 1 point these are your answer and your score is recorded below ";
+               displayMessage += "\nName of folder where Images are stored: " + hasNameOfFolderImagesStored;
+               displayMessage += "\nIs a relatve layout a group View?  " + hasGroupLayoutOptionRelativeView;
+               displayMessage +="\nDoes a TextView from part of a group view? " + hasGroupLayoutOptionTextView;
+               displayMessage += "\nDoes a EditView form pat of a Group view? " + hasGroupLayoutOptionEditView;
+               displayMessage +=  "\nDoes a LinearLayout form part of a group view? " + hasGroupLayoutOptionLinearLayoutView;
                displayMessage += "\nTherefore your score is " + Score;
-               displayMessage += "\nyour sex";
+//               displayMessage += "\nyour sex";
 //        displayMessage = displayMessage + "\nWe are happy to announce another " + "female "+" just joined on our revolution lets see how smart you really are"+"\nBesides joining our revolution you already made one correct choice";
         return displayMessage;
     }
@@ -50,50 +53,56 @@ public class MainActivity extends AppCompatActivity {
 
     public void submit(View view){
 
-        CheckBox actorJack = (CheckBox) findViewById(R.id.jack);
-        boolean hasFavouriteActorJack = actorJack.isChecked();
+        CheckBox groupLayoutOptionEditView = (CheckBox) findViewById(R.id.editViewOption);
+        boolean hasGroupLayoutOptionEditView = groupLayoutOptionEditView.isChecked();
 
-        CheckBox actorRose = (CheckBox) findViewById(R.id.rose);
-        Boolean hasFavouriteActorRose = actorRose.isChecked();
+        CheckBox groupLayoutOptionRelativeView = (CheckBox) findViewById(R.id.relativeViewOption);
+        boolean hasGroupLayoutOptionRelativeView = groupLayoutOptionRelativeView.isChecked();
 
+        CheckBox groupLayoutOptionTextView = (CheckBox) findViewById(R.id.textViewOption);
+        boolean hasGroupLayoutOptionTextView = groupLayoutOptionTextView.isChecked();
+
+        CheckBox groupLayoutOptionLinearLayoutView = (CheckBox) findViewById(R.id.linearLayoutOption);
+        boolean hasGroupLayoutOptionLinearLayoutView = groupLayoutOptionLinearLayoutView.isChecked();
 
         // this finds the name of the person taking the quizz
         EditText getName = (EditText) findViewById(R.id.name);
         final String hasName = getName.getText().toString();
 
         if (hasName != null){
+            Score = Score +1;
             Toast.makeText(this, "This is my Toast message! hooray and Welcome " + hasName,
                     Toast.LENGTH_LONG).show();
         }
 
 
         //gets name of female actor Ross
-        EditText femaleActorName = (EditText) findViewById(R.id.female);
-        String hasNameRose = femaleActorName.getText().toString();
+        EditText folderImagesStored = (EditText) findViewById(R.id.folderImagesAreStored);
+        String hasNameOfFolderImagesStored = folderImagesStored.getText().toString();
 
-        if(hasNameRose.equals(rose)){
+        if(hasNameOfFolderImagesStored.equals(imageStored)){
             Score = Score +1;
-            Log.i("MainActivity.java", hasNameRose);
-            Toast.makeText(this, "That is correct her name is " + rose,
+            Log.i("MainActivity.java", hasNameOfFolderImagesStored);
+            Toast.makeText(this, "That is correct the name of the folder is called " + imageStored,
                     Toast.LENGTH_LONG).show();
-        }else if (!hasNameRose.equals(rose)){
-            Toast.makeText(this, "Did you know her name is " + rose,
+        }else if (!hasNameOfFolderImagesStored.equals(imageStored)){
+            Toast.makeText(this, "Did you know the name the folder is called " + imageStored,
                     Toast.LENGTH_LONG).show();
         }
 
 
 
         //gets the name of the male actor Jack
-        EditText maleActorName = (EditText) findViewById(R.id.male);
-        String hasNameJack = maleActorName.getText().toString();
+        EditText fileExtentionName = (EditText) findViewById(R.id.extentionName);
+        String hasExtentionName = fileExtentionName.getText().toString();
 
-        if (hasNameJack.equals(jack)){
+        if (hasExtentionName.equals(extentionName)){
             Score = Score +1;
-            Log.i("MainActivity.java", hasNameJack);
+            Log.i("MainActivity.java", hasExtentionName);
             Toast.makeText(this, " That is correct his name is Jack",
                     Toast.LENGTH_LONG).show();
-        }else if(!hasNameJack.equals(jack)){
-            Log.i("MainActivity.java", hasNameJack);
+        }else if(!hasExtentionName.equals(extentionName)){
+            Log.i("MainActivity.java", hasExtentionName);
             Toast.makeText(this, " That is incorrect his name is Jack",
                     Toast.LENGTH_LONG).show();
         }
@@ -101,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
 
 displayTotalScored(Score);
 
-        final String displayResults = orderSummary(hasName ,hasNameJack , hasNameRose , hasFavouriteActorJack, hasFavouriteActorRose);
+        final String displayResults = orderSummary(hasName ,hasExtentionName ,hasGroupLayoutOptionTextView, hasNameOfFolderImagesStored, hasGroupLayoutOptionEditView, hasGroupLayoutOptionRelativeView);
 
         //this checks the radio button that has been checked inside the groupView of gender
 
