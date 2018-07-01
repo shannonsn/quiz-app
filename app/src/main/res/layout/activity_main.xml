@@ -6,8 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -18,6 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -26,7 +25,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:src="@drawable/wigglytext"
-                    android:scaleType="center"/>
+                    android:scaleType="center" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -34,9 +34,9 @@
                     android:layout_centerInParent="true"
                     android:textColor="#004d40"
                     android:text="Scroll down"
-                    android:textSize="40sp"
-                    />
+                    android:textSize="40sp" />
             </RelativeLayout>
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -45,6 +45,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -181,7 +182,8 @@
                                     android:layout_height="wrap_content"
                                     android:text="EditView"
                                     android:textSize="16sp"
-                                    android:paddingLeft="24dp"/>
+                                    android:paddingLeft="24dp" />
+
                                 <CheckBox
                                     android:id="@+id/relativeViewOption"
                                     android:layout_width="wrap_content"
@@ -189,13 +191,14 @@
                                     android:paddingLeft="24dp"
                                     android:text="RalativeLayout"
                                     android:textSize="16sp" />
+
                                 <CheckBox
                                     android:id="@+id/textViewOption"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:paddingLeft="24dp"
                                     android:text="TextView"
-                                    android:textSize="16sp"/>
+                                    android:textSize="16sp" />
 
                                 <CheckBox
                                     android:id="@+id/linearLayoutOption"
@@ -226,11 +229,6 @@
 
             <TextView
                 android:id="@+id/genderDisplay"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:id="@+id/yearSank"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 

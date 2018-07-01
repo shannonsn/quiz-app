@@ -26,32 +26,35 @@ public class MainActivity extends AppCompatActivity {
     RadioButton radioButton;
     RadioGroup radioGroupGender;
     RadioButton radioButtonGender;
-    String imageStored ="Drawable";
-    String extentionName ="xml";
+    String imageStored = "Drawable";
+    String extentionName = "xml";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
     }
 
-    public String orderSummary(String hasName, String hasGroupLayoutOptionEditView ,Boolean hasGroupLayoutOptionTextView, String hasNameOfFolderImagesStored, Boolean hasGroupLayoutOptionLinearLayoutView, Boolean hasGroupLayoutOptionRelativeView){
+    public String orderSummary(String hasName, String hasExtentionName, Boolean hasGroupLayoutOptionTextView, String hasNameOfFolderImagesStored, Boolean hasGroupLayoutOptionEditView, Boolean hasGroupLayoutOptionLinearLayoutView, Boolean hasGroupLayoutOptionRelativeView) {
         String displayMessage = "Hi and welcome " + hasName;
-               displayMessage += "\nFor Every question Answered correctly you score 1 point these are your answer and your score is recorded below ";
-               displayMessage += "\nName of folder where Images are stored: " + hasNameOfFolderImagesStored;
-               displayMessage += "\nIs a relatve layout a group View?  " + hasGroupLayoutOptionRelativeView;
-               displayMessage +="\nDoes a TextView from part of a group view? " + hasGroupLayoutOptionTextView;
-               displayMessage += "\nDoes a EditView form pat of a Group view? " + hasGroupLayoutOptionEditView;
-               displayMessage +=  "\nDoes a LinearLayout form part of a group view? " + hasGroupLayoutOptionLinearLayoutView;
-               displayMessage += "\nTherefore your score is " + Score;
+        displayMessage += "\nFor Every question Answered correctly you score 1 point these are your answer and your score is recorded below ";
+        displayMessage += "\nName of folder where Images are stored: " + hasNameOfFolderImagesStored;
+        displayMessage += "\nIs a relatve layout a group View?  " + hasGroupLayoutOptionRelativeView;
+        displayMessage += "\nDoes a TextView from part of a group view? " + hasGroupLayoutOptionTextView;
+        displayMessage += "\nName of the file extention : " + hasExtentionName;
+        displayMessage += "\nDoes a EditView form part of a Group view? " + hasGroupLayoutOptionEditView;
+        displayMessage += "\nDoes a LinearLayout form part of a group view? " + hasGroupLayoutOptionLinearLayoutView;
+        displayMessage += "\nTherefore your score is " + Score;
+        displayMessage += "\nYou Rock!, Thank You for taking time to reflect";
 //               displayMessage += "\nyour sex";
 //        displayMessage = displayMessage + "\nWe are happy to announce another " + "female "+" just joined on our revolution lets see how smart you really are"+"\nBesides joining our revolution you already made one correct choice";
         return displayMessage;
     }
 
 
-    public void submit(View view){
+    public void submit(View view) {
 
         CheckBox groupLayoutOptionEditView = (CheckBox) findViewById(R.id.editViewOption);
         boolean hasGroupLayoutOptionEditView = groupLayoutOptionEditView.isChecked();
@@ -69,8 +72,8 @@ public class MainActivity extends AppCompatActivity {
         EditText getName = (EditText) findViewById(R.id.name);
         final String hasName = getName.getText().toString();
 
-        if (hasName != null){
-            Score = Score +1;
+        if (hasName != null) {
+            Score = Score + 1;
             Toast.makeText(this, "This is my Toast message! hooray and Welcome " + hasName,
                     Toast.LENGTH_LONG).show();
         }
@@ -80,37 +83,36 @@ public class MainActivity extends AppCompatActivity {
         EditText folderImagesStored = (EditText) findViewById(R.id.folderImagesAreStored);
         String hasNameOfFolderImagesStored = folderImagesStored.getText().toString();
 
-        if(hasNameOfFolderImagesStored.equals(imageStored)){
-            Score = Score +1;
+        if (hasNameOfFolderImagesStored.equals(imageStored)) {
+            Score = Score + 1;
             Log.i("MainActivity.java", hasNameOfFolderImagesStored);
             Toast.makeText(this, "That is correct the name of the folder is called " + imageStored,
                     Toast.LENGTH_LONG).show();
-        }else if (!hasNameOfFolderImagesStored.equals(imageStored)){
+        } else if (!hasNameOfFolderImagesStored.equals(imageStored)) {
             Toast.makeText(this, "Did you know the name the folder is called " + imageStored,
                     Toast.LENGTH_LONG).show();
         }
-
 
 
         //gets the name of the male actor Jack
         EditText fileExtentionName = (EditText) findViewById(R.id.extentionName);
         String hasExtentionName = fileExtentionName.getText().toString();
 
-        if (hasExtentionName.equals(extentionName)){
-            Score = Score +1;
+        if (hasExtentionName.equals(extentionName)) {
+            Score = Score + 1;
             Log.i("MainActivity.java", hasExtentionName);
-            Toast.makeText(this, " That is correct his name is Jack",
+            Toast.makeText(this, " That is correct the extention of the file thats displays content on a screen is " + extentionName,
                     Toast.LENGTH_LONG).show();
-        }else if(!hasExtentionName.equals(extentionName)){
+        } else if (!hasExtentionName.equals(extentionName)) {
             Log.i("MainActivity.java", hasExtentionName);
-            Toast.makeText(this, " That is incorrect his name is Jack",
+            Toast.makeText(this, " did you know the file is called " + extentionName,
                     Toast.LENGTH_LONG).show();
         }
 
 
-displayTotalScored(Score);
+        displayTotalScored(Score);
 
-        final String displayResults = orderSummary(hasName ,hasExtentionName ,hasGroupLayoutOptionTextView, hasNameOfFolderImagesStored, hasGroupLayoutOptionEditView, hasGroupLayoutOptionRelativeView);
+        final String displayResults = orderSummary(hasName, hasExtentionName, hasGroupLayoutOptionTextView, hasNameOfFolderImagesStored, hasGroupLayoutOptionEditView, hasGroupLayoutOptionLinearLayoutView, hasGroupLayoutOptionRelativeView);
 
         //this checks the radio button that has been checked inside the groupView of gender
 
@@ -124,27 +126,12 @@ displayTotalScored(Score);
                 radioButtonGender = findViewById(radioIdForSex);
                 String gender = radioButtonGender.getText().toString();
                 String yourChoice = "your choice";
-                genderRadioDisplay(yourChoice +": " + gender);
+                genderRadioDisplay(yourChoice + ": " + gender);
             }
         });
 
 
-
-        submit.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                radioGroup = findViewById(R.id.titanic_sank);
-                int radioId = radioGroup.getCheckedRadioButtonId();
-                radioButton = findViewById(radioId);
-                String yearSelected = "Titanic Sank ";
-                displayTitanicSank(yearSelected + radioButton.getText());
-            }
-        });
-
-
-
-
-        submit.setOnClickListener(new View.OnClickListener(){
+        submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 radioGroup = findViewById(R.id.titanic_made);
@@ -164,24 +151,20 @@ displayTotalScored(Score);
     }
 
 
-
-    public void displayTotalScored(int score){
+    public void displayTotalScored(int score) {
         TextView scoreResults = (TextView) findViewById(R.id.scores);
         scoreResults.setText(String.valueOf(score));
     }
 
-    public void displayResult(String view){
+    public void displayResult(String view) {
         TextView resultsScore = (TextView) findViewById(R.id.results);
         resultsScore.setText(String.valueOf(view));
+
     }
 
-    public void displayTitanicSank(String view){
-        TextView YearSank = (TextView) findViewById(R.id.yearSank);
-        YearSank.setText(String.valueOf(view));
-    }
-    public void genderRadioDisplay(String view){
+    public void genderRadioDisplay(String view) {
         TextView displayRadioGender = (TextView) findViewById(R.id.genderDisplay);
         displayRadioGender.setText(String.valueOf(view));
     }
 
-    }
+}
